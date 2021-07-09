@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Mon Titre</title>
+	</head>
+
+	<body>
+
+		<script>
+
+			var menuData = [
+				{
+					name: "01 Accueil",
+					href: "/",
+				},
+				{
+					name: "02 Live Session",
+					items: [
+						{
+							name: "Cours",
+						},
+						{
+							name: "Group Chat",
+							href: "/session/chat",
+						},
+						{
+							name: "Live Coding",
+							href: "/session/livecoding",
+						},
+					]
+				},
+				{
+					name: "02 Ressources Humaines",
+					items: [
+						{
+							name: "Personnel",
+							href: "/view/Staffs/list",
+						},
+						{
+							name: "Etudiants",
+							href: "/view/Students/list",
+						},
+						{
+							name: "Groupes",
+							href: "/view/Groups/list",
+						},
+					]
+				},
+				{
+					name: "03 Gestion Pédagogique",
+					items: [
+						{
+							name: "Liste des Cours",
+							href: "/view/Courses/list",
+						},
+						{
+							name: "Liste des Exercices",
+							href: "/view/Exercises/list",
+						},
+					]
+				},
+				{
+					name: "04 Outils",
+					items: [
+						{
+							name: "Référentiels",
+							items: [
+								{
+									name: "Types d'utilisateur",
+									href: "/view/References__UsersTypes/list",
+								},
+								{
+									name: "Roles du personnel",
+									href: "/view/References__StaffsRoles/list",
+								},
+							]
+						},
+						{
+							name: "Logs",
+							items: [
+								{
+									name: "Utilisateurs",
+									href: "/view/Users__Logs/list",
+								},
+								{
+									name: "Systèmes",
+									href: "/view/System__Logs/list",
+								},
+							]
+						},
+					]
+				},
+				{
+					name: "06 About",
+					items: [
+						{
+							name: "Privacy",
+						},
+						{
+							name: "Terms",
+						},
+					],
+				},
+			];
+				
+				
+
+			function menu (menuData) {
+				if (!menuData)
+					return "";
+
+				var ul = document.createElement('ul');
+				for (var i=0; i< menuData.length ; i++) {
+					var li = document.createElement('li');
+					var span = document.createElement('span');
+					span.innerText = menuData[i].name;		
+					li.append(span);
+				li.append(menu(menuData[i].items));
+					ul.append(li);
+				}
+				return ul;
+			}
+
+			document.body.append(menu(menuData));
+
+		</script>
+
+
+	</body>
+
+</html>

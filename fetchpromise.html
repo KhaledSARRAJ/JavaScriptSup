@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Mon Titre</title>
+	</head>
+
+	<body>
+
+		<script>
+
+
+			var uUsers = "https://jsonplaceholder.typicode.com/users";
+			var uPosts = "https://jsonplaceholder.typicode.com/posts";
+
+			Promise.all([
+
+				fetch(uUsers).then(d => d.json()),
+				fetch(uPosts).then(d => d.json()),
+
+			]).then(function (data) {
+				for (var e of data[0]) {
+
+					var p = document.createElement('p');
+					var h2 = document.createElement('h2');
+					var span = document.createElement('span');
+					var ul = document.createElement('ul');
+					var li1 = document.createElement('li');
+					var li2 = document.createElement('li');
+
+					h2.innerText = "[" + e.id + "] " + e.name;
+					span.innerText = e.username;
+					li1.innerText = e.address.geo.lat;
+					li2.innerText = e.address.geo.lng;
+
+					p.append(h2);
+					p.append(span);
+					p.append(ul);
+					ul.append(li1);
+					ul.append(li2);
+
+					document.body.append(p);
+
+
+					var mesPost = data[1].filter(p => p.userId == e.id);
+					for (var q of mesPost) {
+						var pp = document.createElement('p');
+						var ph3 = document.createElement('h3');
+						ph3.innerText = q.title;
+						pp.append(ph3);
+						pp.append(q.body);
+
+						p.append(pp);
+
+					}
+
+
+				}
+			});
+
+
+
+		</script>
+
+
+	</body>
+
+</html>

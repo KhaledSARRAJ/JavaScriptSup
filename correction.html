@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Mon Titre</title>
+	</head>
+
+	<body>
+
+		<ul>
+			<li>
+				<span>Item 1</span>
+				<ul>
+					<li>
+						<span>Item 1.1</span>
+						<ul>
+							<li><span>Item 1.1.1</span></li>
+						</ul>
+					</li>
+					<li>
+						<span>Item 1.2</span>
+						<ul>
+							<li><span>Item 1.2.1</span></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<span>Item 2</span>
+				<ul>
+					<li>
+						<span>Item 2.1</span>
+						<ul>
+							<li><span>Item 2.1.1</span></li>
+						</ul>
+					</li>
+					<li>
+						<span>Item 2.2</span>
+						<ul>
+							<li><span>Item 2.2.1</span></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		<ul>
+
+		<script>
+function menu () {
+				var ul1 = document.createElement('ul');
+				for (var i = 1; i < 5; i++) {
+					var li1 = document.createElement('li');
+					var span1 = document.createElement('span');
+					span1.innerText = 'Item ' + i;
+					li1.append(span1);
+
+					var ul2 = document.createElement('ul');
+					for (var j = 1; j < 5; j++) {
+						var li2 = document.createElement('li');
+						var span2 = document.createElement('span');
+						span2.innerText = 'Item ' + i + '.' + j;
+						li2.append(span2);
+                        ul2.append(li2);
+
+						var ul3 = document.createElement('ul');
+						for(var k =1; k<5; k++){
+						
+						var li3 = document.createElement('li');
+						var span3 = document.createElement('span');
+						span3.innerText = 'Item ' + i + '.' + j + '.' + k;
+						li3.append(span3);
+						ul3.append(li3);
+						}
+					
+					li2.append(ul3);
+					li1.append(ul2);
+					ul1.append(li1);
+					}
+				}
+				return ul1;
+			}
+			document.body.append(menu());
+
+		</script>
+
+
+	</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Mon Titre</title>
+	</head>
+
+	<body>
+
+		<ul>
+			<li>
+				<span>Item 1</span>
+				<ul>
+					<li>
+						<span>Item 1.1</span>
+						<ul>
+							<li><span>Item 1.1.1</span></li>
+						</ul>
+					</li>
+					<li>
+						<span>Item 1.2</span>
+						<ul>
+							<li><span>Item 1.2.1</span></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<span>Item 2</span>
+				<ul>
+					<li>
+						<span>Item 2.1</span>
+						<ul>
+							<li><span>Item 2.1.1</span></li>
+						</ul>
+					</li>
+					<li>
+						<span>Item 2.2</span>
+						<ul>
+							<li><span>Item 2.2.1</span></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		<ul>
+
+		<script>
+/*
+			function menu (node) {
+			if(node == 0){
+			return ul = document.createElement('ul');
+			}else{
+				var ul = document.createElement('ul');
+				for (var i = 1; i < node; i++) {
+					var li = document.createElement('li');
+					var span = document.createElement('span');
+					span.innerText = 'Item ' + i + '.' + i;
+					li.append(span);
+					li.append(menu(node-1));
+					ul.append(li);
+				}
+				
+				return ul;
+			}
+}
+			document.body.append(menu(4));
+*/
+function menu(path, depth){
+if (!depth)
+					return "";
+var ul = document.createElement('ul');
+
+for(let i = 1; i <= depth; i++){
+var li =document.createElement('li')
+var span = document.createElement('span');
+span.innerText=path + i 
+li.append(span);
+li.append(menu(path + i + '.' , depth-1));
+
+
+
+ul.append(li);
+}
+return ul;
+}
+document.body.append(menu("item", 4));
+
+
+
+
+
+
+		</script>
+
+
+	</body>
+
+</html>
